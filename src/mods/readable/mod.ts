@@ -1,0 +1,18 @@
+import { AbiWritable } from "@/mods/writable/mod.ts";
+import { Cursor } from "@hazae41/cursor";
+
+export interface AbiReadable<T = unknown> {
+
+  readonly kind: "static" | "dynamic"
+
+  from(value: T): AbiWritable<T>
+
+  read(cursor: Cursor): AbiWritable<T>
+
+}
+
+export interface AbiPackable<T = unknown> extends AbiReadable<T> {
+
+  pack(value: T): AbiWritable<T>
+
+}
